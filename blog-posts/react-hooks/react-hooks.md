@@ -2,7 +2,7 @@
 title: React Hooks
 published: false
 description: Describing about react hooks basics
-tags: 
+tags: react, javascript
 cover_image:
 canonical_url:
 ---

@@ -1,11 +1,3 @@
----
-title: React Hooks
-published: false
-description: Describing about react hooks basics
-tags: react, javascript
-cover_image:
-canonical_url:
----
 
 In this blog post, we are going to learn about -
 1. State management in a React app

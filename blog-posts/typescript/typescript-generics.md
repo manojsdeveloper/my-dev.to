@@ -47,7 +47,7 @@ Ref: https://www.typescriptlang.org/docs/handbook/generics.html
 ----------------------
 
 Can someone explain to me what <T> the means?
-That is typescripts Generics declaration.
+That is typescripts [Generics]: https://www.typescriptlang.org/docs/handbook/generics.html declaration.
 
 Excerpt:
 
@@ -57,7 +57,7 @@ In languages like C# and Java, one of the main tools in the toolbox for creating
 You mentioned:
 
 I don't know what 'T' is.
-'T' is going to be a type declared at run-time instead of compile time. The T variable could be any non-declared variable (I couldn't find a reference, but I would assume any valid set of characters that could be used for a variable names). Similarly in c#, if the type T represents is not a value type but a more complex type (class) or interface, it could be named/declared as TVehicle or TAnimal to help denote a valid type for future programmers (and could be considered best practice because just T is not intuitive). I prefer TSomething because I know that uppercase T means a generic type.  WSometing or ASomething is also valid, but I just don't prefer it. (Microsofts APIs are almost always TContext or TEntity for example).
+'T' is going to be a type declared at run-time instead of compile time. The T variable could be any non-declared variable (I couldn't find a reference, but I would assume any valid set of characters that could be used for a variable names). Similarly in c#, if the type T represents is not a value type but a more complex type (class) or interface, it could be named/declared as TVehicle or TAnimal to help denote a valid type for future programmers (and could be considered best practice because just T is not intuitive). I prefer TSomething because I know that uppercase T means a generic type.  WSometing or ASomething is also valid, but I just don't prefer it. (Microsofts APIs are almost always [TContext]: https://msdn.microsoft.com/en-us/library/gg679506(v=vs.113).aspx or [TEntity]: https://msdn.microsoft.com/en-us/library/gg696460(v=vs.113).aspx for example).
 
 It'd also be helpful if someone could explain to me what this function is doing.
 Well the function isn't doing anything. This is more declaring a type of function that can have multiple run-time type values. Instead of explaining that, I'll include an excerpt taken directly from the link above.
@@ -101,7 +101,7 @@ let john = people.pop();
 // because we've declared the people variable as an array of Person
 
 console.log(john.FirstName);  
-Declaring type'd generic constraints. A very good example of Open - Closed Principle.
+Declaring type'd generic constraints. A very good example of [Open - Closed Principle]: https://en.wikipedia.org/wiki/Open–closed_principle.
 
 In object-oriented programming, the open/closed principle states "software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification";[1] that is, such an entity can allow its behaviour to be extended without modifying its source code.
 In the following example, anyone could extend Human or Cheetah or even create their own derived type and the Logger functionality would continue to work without any modification.
@@ -129,9 +129,9 @@ public class Logger<TAnimal extends IAnimal> {
 var logger = new Logger();
 var human = new Human();
 logger.Log(human);      
-Working Example
+[Working Example]: https://codepen.io/erikphilips/pen/LJYQda?editors=0022
 
-In the previous example I used a Generic Constraint to limit the TAnimal type programmers can use to create a Logger instance to types that derive from the interface IAnimal. This allows the compiler to validate that the Logger class always assume the type has a property LegCount.
+In the previous example I used a [Generic Constraint]: https://www.typescriptlang.org/docs/handbook/generics.html#generic-constraints to limit the TAnimal type programmers can use to create a Logger instance to types that derive from the interface IAnimal. This allows the compiler to validate that the Logger class always assume the type has a property LegCount.
 
 You can explain to me why in the Typescript documentation they put <T> instead of putting something more descriptive like <Identity> for example. Nothing and <T> for me is the same. Now does everyone use the <T> like fools, or did I miss something?
 These are all going to be assumptions in the following. I do not know neither the team who designed the typescript generic system nor the team who wrote the documentation.
@@ -139,7 +139,7 @@ These are all going to be assumptions in the following. I do not know neither th
 At the root level of generics is the ability to use T as any possible type (not to be confused with typescript any). Meaning Array<T> is the interface (for lack of a better word) and when we create a concrete type we replace T with a declared type:
 
 Array<number>
-So for the interface Array<T> what makes more sense than T? I don't know. I do know that T has to be a Type (number, string, etc) so it makes sense to use T because it the first letter of the word Type. I think Array<Type> would be really confusing and/or might even be invalid if type or Type became reserved or restricted (currently type has special meaning in certain contexts so it's also a poor choice) so avoiding those is a good choice. Other languages (C-sharp, Java) also choose to use T, so switching between languages and being able to use the same term is advantageous.
+So for the interface Array<T> what makes more sense than T? I don't know. I do know that T has to be a Type (number, string, etc) so it makes sense to use T because it the first letter of the word Type. I think Array<Type> would be really confusing and/or might even be invalid if type or Type became reserved or restricted (currently type has special meaning in certain contexts so it's also a poor choice) so avoiding those is a good choice. Other languages ([C-sharp]: https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/generic-methods, [Java]: https://docs.oracle.com/javase/tutorial/java/generics/types.html) also choose to use T, so switching between languages and being able to use the same term is advantageous.
 
 On the flip side what would the following mean?
 

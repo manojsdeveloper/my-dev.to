@@ -2,5 +2,9 @@
   {
     "id": 404122,
     "relativePathToArticle": "./blog-posts/react-hooks/react-hooks.md"
+  },
+  {
+    "id": 410069,
+    "relativePathToArticle": "./blog-posts/angular10-upgrade/angularLatestVersionUpgrade.md"
   }
 ]

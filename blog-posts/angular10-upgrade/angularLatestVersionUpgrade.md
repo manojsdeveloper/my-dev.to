@@ -1,13 +1,3 @@
----
-title: Angular Latest version upgrade to v10 and CLI Update
-published: false
-description: Updating angular version from v2-v9 to v10
-tags: #angular #angularCLI
-cover_image:
-canonical_url:
----
-
-# Angular Latest version upgrade to v10 and CLI Update
 
 Angular 10.0.0 is finally here. While upgrading to Angular 10 version remember few things before running `ng update` command.
 

@@ -1,11 +1,3 @@
----
-title: Angular Unit Testing HttpClient API
-published: false
-description: 
-tags: 
-cover_image:
-canonical_url:
----
 
 # Angular Unit Testing HttpClient API
 

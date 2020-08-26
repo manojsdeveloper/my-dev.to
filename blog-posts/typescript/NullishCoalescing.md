@@ -1,5 +1,3 @@
-## Nullish Coalescing
-
 The nullish coalescing operator is another upcoming ECMAScript feature that goes hand-in-hand with optional chaining.
 
 You can think of this feature - the `??` operator - as a way to “fall back” to a default value when dealing with null or undefined. When we write code like

@@ -6,5 +6,9 @@
   {
     "id": 410075,
     "relativePathToArticle": "./blog-posts/angular/angular10-upgrade/angularLatestVersionUpgrade.md"
+  },
+  {
+    "id": 438421,
+    "relativePathToArticle": "./blog-posts/typescript/NullishCoalescing.md"
   }
 ]

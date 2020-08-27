@@ -10,5 +10,9 @@
   {
     "id": 438421,
     "relativePathToArticle": "./blog-posts/typescript/NullishCoalescing.md"
+  },
+  {
+    "id": 439472,
+    "relativePathToArticle": "./blog-posts/typescript/typescript-generics.md"
   }
 ]

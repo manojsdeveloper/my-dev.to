@@ -1,12 +1,19 @@
+Building components that not only have well-defined and consistent APIs, but are also reusable.
+Components that are capable of working on the data of today as well as the data of tomorrow will give you the most flexible capabilities for building up large software systems.
 
-# Generics
+Generics, that is, being able to create a component that can work over a variety of types rather than a single one. This allows users to consume these components and use their own types.
 
-Building components needs to be reusable.
+While using `any` is certainly generic in that it will cause the function to accept any and all types for the type of arg, we actually are losing the information about what that type was when the function returns. If we passed in a number, the only information we have is that any type could be returned.
 
+I don't know what 'T' is.
+'T' is going to be a type declared at run-time instead of compile time. The T variable could be any non-declared variable (I couldn't find a reference, but I would assume any valid set of characters that could be used for a variable names). Similarly in c#, if the type T represents is not a value type but a more complex type (class) or interface, it could be named/declared as TVehicle or TAnimal to help denote a valid type for future programmers (and could be considered best practice because just T is not intuitive). I prefer TSomething because I know that uppercase T means a generic type.  WSometing or ASomething is also valid, but I just don't prefer it. (Microsofts APIs are almost always [TContext]: https://msdn.microsoft.com/en-us/library/gg679506(v=vs.113).aspx or [TEntity]: https://msdn.microsoft.com/en-us/library/gg696460(v=vs.113).aspx for example).
+
+It'd also be helpful if someone could explain to me what this function is doing.
+Well the function isn't doing anything. This is more declaring a type of function that can have multiple run-time type values. Instead of explaining that, I'll include an excerpt taken directly from the link above.
 
 ## Working with Generic Type Variables
 
-When you begin to use generics, you’ll notice that when you create generic functions like identity, the compiler will enforce that you use any generically typed parameters in the body of the function correctly. That is, that you actually treat these parameters as if they could be any and all types.
+Instead, we need a way of capturing the type of the argument in such a way that we can also use it to denote what is being returned. Here, we will use a type variable, a special kind of variable that works on types rather than values.
 
 ```
 function identity<T>(arg: T): T {
@@ -32,80 +39,36 @@ function loggingIdentity<T>(arg: T[]): T[] {
   console.log(arg.length); // Array has a .length, so no more error
   return arg;
 }
+console.log(loggingIdentity<string>(['cow','dog']))
 ```
 
 The type of loggingIdentity as “the generic function loggingIdentity takes a type parameter T, and an argument arg which is an array of Ts, and returns an array of Ts.”
 
-## Generic Types
-
 we created generic identity functions that worked over a range of types. In this section, we’ll explore the type of the functions themselves and how to create generic interfaces.
 
-
-
-Ref: https://www.typescriptlang.org/docs/handbook/generics.html
-
-----------------------
-
-Can someone explain to me what <T> the means?
-That is typescripts [Generics]: https://www.typescriptlang.org/docs/handbook/generics.html declaration.
-
-Excerpt:
-
-A major part of software engineering is building components that not only have well-defined and consistent APIs, but are also reusable. Components that are capable of working on the data of today as well as the data of tomorrow will give you the most flexible capabilities for building up large software systems.
-
-In languages like C# and Java, one of the main tools in the toolbox for creating reusable components is generics, that is, being able to create a component that can work over a variety of types rather than a single one. This allows users to consume these components and use their own types.
-You mentioned:
-
-I don't know what 'T' is.
-'T' is going to be a type declared at run-time instead of compile time. The T variable could be any non-declared variable (I couldn't find a reference, but I would assume any valid set of characters that could be used for a variable names). Similarly in c#, if the type T represents is not a value type but a more complex type (class) or interface, it could be named/declared as TVehicle or TAnimal to help denote a valid type for future programmers (and could be considered best practice because just T is not intuitive). I prefer TSomething because I know that uppercase T means a generic type.  WSometing or ASomething is also valid, but I just don't prefer it. (Microsofts APIs are almost always [TContext]: https://msdn.microsoft.com/en-us/library/gg679506(v=vs.113).aspx or [TEntity]: https://msdn.microsoft.com/en-us/library/gg696460(v=vs.113).aspx for example).
-
-It'd also be helpful if someone could explain to me what this function is doing.
-Well the function isn't doing anything. This is more declaring a type of function that can have multiple run-time type values. Instead of explaining that, I'll include an excerpt taken directly from the link above.
-
-function identity<T>(arg: T): T {
-  return arg;
-}
-which can be used like:
-
-// type of output will be 'string'
-let output = identity<string>("myString");  
-or
-
-// type of output will be 'string', the compiler will figure out `T`
-// based on the value passed in
-let output = identity("myString");  
-or
-
-// type of output will be 'number'
-let output = identity(8675309);  
-Which might beg the question:
-
-Why use generics
-Javascript has arrays, but when you retrieve a value from the array, it literally could be anything (typescript: any). With typescript you get Type safety by declaring them like:
-
  // Array<T>
- let list: number[] = [1, 2, 3];
+`let list: number[] = [1, 2, 3];`
  // or 
- let list: Array<number> = [1, 2, 3];
+ `let list: Array<number> = [1, 2, 3];`
 Now each value in the array has a type. Typescript will throw a compile-time error if you attempt to put a string into this array. And you get type-safety and intellisense (depending on your editor) when you retrieve a value:
-
+```
 class Person {
   FirstName: string;
 }
 
 let people: Array<Person> = [];
 people.push({ FirstName: "John" } as Person);
-
-let john = people.pop();  
+```
+`let john = people.pop();`
 // john is of type Person, the typescript compiler knows this
 // because we've declared the people variable as an array of Person
 
-console.log(john.FirstName);  
+`console.log(john.FirstName);`
 Declaring type'd generic constraints. A very good example of [Open - Closed Principle]: https://en.wikipedia.org/wiki/Open–closed_principle.
 
 In object-oriented programming, the open/closed principle states "software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification";[1] that is, such an entity can allow its behaviour to be extended without modifying its source code.
 In the following example, anyone could extend Human or Cheetah or even create their own derived type and the Logger functionality would continue to work without any modification.
-
+```
 interface IAnimal {
   LegCount: number;
 }
@@ -128,7 +91,8 @@ public class Logger<TAnimal extends IAnimal> {
 
 var logger = new Logger();
 var human = new Human();
-logger.Log(human);      
+logger.Log(human);
+```      
 [Working Example]: https://codepen.io/erikphilips/pen/LJYQda?editors=0022
 
 In the previous example I used a [Generic Constraint]: https://www.typescriptlang.org/docs/handbook/generics.html#generic-constraints to limit the TAnimal type programmers can use to create a Logger instance to types that derive from the interface IAnimal. This allows the compiler to validate that the Logger class always assume the type has a property LegCount.
@@ -145,24 +109,28 @@ On the flip side what would the following mean?
 
 Array<Identity>
 What is Identity here? There is no constraint to help other developers or future developers know what it is. It would appear to me to be a specific typed Array that I must implement explicitly, which means it's not up to me to choose the generic type.
-
+```
 interface Foo1 {
   bars: Array<Identity>;
 }
+```
 In the previous example, I (and probably most developers) would assume that Identity is an existing type and I cannot change it.
-
+```
 interface Foo2<T> {
   bars: Array<T>;
 }
+```
 With Foo2 I know I have to choose a type.
-
+```
 interface Foo3<Identity> {
   bars: Array<Identity>;
 }
+```
 Foo3 is just confusing.
-
+```
 interface Foo4<TIdentity> {
   bars: Array<TIdentity>;
 }
+```
 Now with Foo4, I am much more confident that I must choose the type, but I'm still a bit confused why TIdentity. Obviously in some contexts, where the type is more defined, it would make sense.
 

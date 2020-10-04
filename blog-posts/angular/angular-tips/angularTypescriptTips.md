@@ -30,3 +30,6 @@ Now a consumer can import what it needs from the barrel.
 import { Hero, HeroService } from '../heroes'; // index is implied
 ```
 The Angular scoped packages each have a barrel named index.
+
+#Safely Displaying Data with the Elvis Operator
+{{someObjectThatMayNotExist?.someProperty}}

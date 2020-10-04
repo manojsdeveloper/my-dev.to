@@ -79,3 +79,6 @@ Don't forget you can create a npm script to run this test configuration to save 
 Now that we've covered the basics of using Angular CLI to run unit tests, we'll dive deeper into Karma configuration and customizing the test runner in the next post in this series.
 
 Ref: https://dev.to/alisaduncan/how-to-level-up-your-angular-unit-testing-game-13-7a1
+
+karma.config.json
+    singleRun: false,

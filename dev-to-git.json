@@ -14,5 +14,9 @@
   {
     "id": 439472,
     "relativePathToArticle": "./blog-posts/typescript/typescript-generics.md"
+  },
+  {
+    "id": 829603,
+    "relativePathToArticle": "./blog-posts/javaScript/JavascriptTruthyandFalsy.md"
   }
 ]

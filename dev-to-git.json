@@ -18,5 +18,9 @@
   {
     "id": 829603,
     "relativePathToArticle": "./blog-posts/javaScript/JavascriptTruthyandFalsy.md"
+  },
+  {
+    "id": 834130,
+    "relativePathToArticle": "./blog-posts/c#/entityFrameworkCodeFirstApproach.md"
   }
 ]

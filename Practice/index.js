@@ -62,5 +62,33 @@ function mergeSortedArrays(array1, array2) {
 }
 
 
-const result1 = mergeSortedArrays([0,3,4,31], [3,4,6,30]);
-console.log(result1);
+// const result1 = mergeSortedArrays([0,3,4,31], [3,4,6,30]);
+// console.log(result1);
+
+function LongestWord(sen) { 
+  var stringLength = sen.split(" ");
+  // var result = [];
+  var value = stringLength[0].length;
+  var result = 0;
+   // console.log(stringLength.length)
+  // code goes here  
+   for(i=1;i < stringLength.length;i++) {
+     console.log(value, stringLength[i])
+     console.log(value, stringLength[i].length)
+     // result.push(stringLength[i].length);
+  //   stringLength.push(stringLength[i]);
+    // 4 < 3
+    if(value < stringLength[i].length) {
+      // console.log(value, stringLength[i].length)
+      value = stringLength[i].length;
+      result = i;
+    }
+
+   }
+
+  return stringLength[result]; 
+
+}
+   
+// keep this function call here 
+console.log(LongestWord('Have the function LongestWord(sen) take the sen parameter being passed and return the longest word in the string. If there are two or more words that are the same length, return the first word from the string with that length. Ignore punctuation and assume sen will not be empty. Words may also contain numbers, for example "Hello world123 567"'));

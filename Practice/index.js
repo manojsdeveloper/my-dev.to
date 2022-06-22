@@ -91,4 +91,18 @@ function LongestWord(sen) {
 }
    
 // keep this function call here 
-console.log(LongestWord('Have the function LongestWord(sen) take the sen parameter being passed and return the longest word in the string. If there are two or more words that are the same length, return the first word from the string with that length. Ignore punctuation and assume sen will not be empty. Words may also contain numbers, for example "Hello world123 567"'));
+//console.log(LongestWord('Have the function LongestWord(sen) take the sen parameter being passed and return the longest word in the string. If there are two or more words that are the same length, return the first word from the string with that length. Ignore punctuation and assume sen will not be empty. Words may also contain numbers, for example "Hello world123 567"'));
+
+
+//Leet Code: Two Sum
+ var twoSum = function(nums, target) {
+    let firstNum = nums[0];
+    for(i=0;i<nums.length;i++) {
+      if(firstNum + nums[i+1] == target){
+        return [i, i+1];
+      }
+    }
+};
+
+var sumResult = twoSum([2,7,11,15], 9);
+console.log(sumResult);

@@ -96,13 +96,35 @@ function LongestWord(sen) {
 
 //Leet Code: Two Sum
  var twoSum = function(nums, target) {
-    let firstNum = nums[0];
+  //Solution1:
+    // let firstNum = nums[0];
+    // for(i=0;i<nums.length;i++) {
+    //   if(firstNum + nums[i+1] == target){
+    //     return [i, i+1];
+    //   }
+    // }
+    //Solution2:
+    // for(i=0;i<nums.length;i++) {
+    //   for(j=1;j<nums.length;j++) {
+    //     if(nums[i]+nums[j] === target){
+    //       return [i, j];
+    //     }
+    //   }
+    // }
+    //Solution3: LeetCode accepted the answer and submitted
+    let result = null;
+    let hashMap = [];
+    let diff = 0;
     for(i=0;i<nums.length;i++) {
-      if(firstNum + nums[i+1] == target){
-        return [i, i+1];
+      diff = target - nums[i];
+      if(hashMap.indexOf(diff) === -1) {
+        hashMap.push(nums[i]);
+      } else {
+        result = [hashMap.indexOf(diff),i];
       }
     }
+    return result;
 };
 
-var sumResult = twoSum([2,7,11,15], 9);
+var sumResult = twoSum([2,11,7,15], 9);
 console.log(sumResult);

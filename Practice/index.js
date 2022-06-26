@@ -112,7 +112,7 @@ function LongestWord(sen) {
     //   }
     // }
     //Solution3: LeetCode accepted the answer and submitted
-    let result = null;
+    let result = nums[0];
     let hashMap = [];
     let diff = 0;
     for(i=0;i<nums.length;i++) {
